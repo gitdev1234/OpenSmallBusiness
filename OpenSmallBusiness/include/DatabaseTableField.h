@@ -9,6 +9,7 @@
 #ifndef DatabaseTableField_H
 #define DatabaseTableField_H
 
+#include <sstream>
 #include <iostream>
 
 using namespace std;
@@ -25,6 +26,9 @@ class DatabaseTableField {
     public:
         /* --- constructor --- */
         DatabaseTableField(const string& name_ = "", DataType dataType_ = DataType::BOOL, int length_ = 0);
+
+        /* --- format functions --- */
+        const string getTableFieldAndTypeAsString() const;
 
         /* --- getters / setters --- */
         string getName() const;

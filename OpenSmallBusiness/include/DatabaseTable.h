@@ -9,7 +9,14 @@
 #ifndef DatabaseTable_H
 #define DatabaseTable_H
 
+#include <sstream>
+#include <QSqlQuery>
+// --temp
+#include <iostream>
+using namespace std;
+// --temp
 #include "DatabaseTableType.h"
+
 
 /**
  * DatabaseTable class
@@ -26,12 +33,11 @@
 class DatabaseTable {
     public:
         /* --- constructor --- */
-        DatabaseTable() {};
+        DatabaseTable();
 
         /* --- getter and setter --- */        
         DatabaseTableType *getDatabaseTableType() const;
         void setDatabaseTableType(DatabaseTableType *val_);
-
 
         /* --- provide information about table structure --- */
         string getTableName();

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
 
 #include "DatabaseTable.h"
 #include "ContactTable.h"
@@ -19,7 +20,7 @@ int main() {
     cout << "Hello World" << endl;
 
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    /*QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("localhost");
     db.setDatabaseName("OpenSmallBusiness");
     db.setUserName("qtuser");
@@ -27,9 +28,12 @@ int main() {
     bool ok = db.open();
     cout << ok << endl;
 
-    //QSqlQuery query;
-    //query.exec("create table ");
 
+    string s = "CREATE TABLE table_name ( column1 integer, column2 integer, column3 integer );";
+    QSqlQuery query;
+    query.prepare(QString::fromStdString(s));
+    query.exec();
+*/
 
     DatabaseTable contactTable;
     contactTable.setDatabaseTableType(new ContactTable());
@@ -40,6 +44,8 @@ int main() {
         cout << test[i].getDataType() << endl;
         cout << test[i].getLength() << endl;
     }
+
+    contactTable.createTable();
 
 }
 

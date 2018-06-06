@@ -15,6 +15,21 @@ DatabaseTableField::DatabaseTableField(const string &name_, DataType dataType_, 
     setLength(length_);
 }
 
+/* --- format functions --- */
+const string DatabaseTableField::getTableFieldAndTypeAsString() const{
+    stringstream text;
+    string s;
+    text << getName() << " ";
+    s = text.str();
+    switch (getDataType()) {
+        case DataType::INT    : text << "int"                           ; break;
+        case DataType::STRING : text << "varchar(" << getLength() << ")"; break;
+        case DataType::DOUBLE : text << "double"                        ; break;
+        case DataType::BOOL   : text << "bool"                          ; break;
+    }
+    s = text.str();
+    return s;
+}
 
 /* --- getters / setters --- */
 string DatabaseTableField::getName() const {
