@@ -23,10 +23,13 @@ SOURCES += \
     src/DatabaseTableField.cpp \
     src/ContactTable.cpp \
     src/DatabaseTable.cpp \
-    src/DatabaseTableType.cpp
+    src/DatabaseTableType.cpp \
+    src/Database.cpp
 
 HEADERS += \
     include/ContactTable.h \
     include/DatabaseTableType.h \
     include/DatabaseTable.h \
-    include/DatabaseTableField.h
+    include/DatabaseTableField.h \
+    include/Database.h \
+    include/Config.h

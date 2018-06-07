@@ -11,12 +11,11 @@
 
 #include <sstream>
 #include <iostream>
+#include "Config.h"
 
 using namespace std;
 
 #include "DatabaseTableField.h"
-
-enum DataType {BOOL,INT,DOUBLE,STRING}; // TODO
 
 /**
  * DatabaseTableField class
