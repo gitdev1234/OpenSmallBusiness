@@ -3,6 +3,7 @@
 #include <QtSql/QSqlQuery>
 
 #include "DatabaseTable.h"
+#include "Database.h"
 #include "ContactTable.h"
 #include <iostream>
 
@@ -33,19 +34,12 @@ int main() {
     QSqlQuery query;
     query.prepare(QString::fromStdString(s));
     query.exec();
-*/
 
+*/
     DatabaseTable contactTable;
     contactTable.setDatabaseTableType(new ContactTable());
-    cout << contactTable.getTableName() << endl;
-    vector<DatabaseTableField> test = contactTable.getTableStructure();
-    for (int i=0; i<test.size(); i++) {
-        cout << test[i].getName() << endl;
-        cout << test[i].getDataType() << endl;
-        cout << test[i].getLength() << endl;
-    }
-
     contactTable.createTable();
+
 
 }
 

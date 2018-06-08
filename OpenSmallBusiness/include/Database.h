@@ -34,7 +34,8 @@ class Database {
         ~Database() {}
 
         /* --- interfacing the database --- */
-        bool init();
+        bool init(bool secondTry_ = false);
+        void executeSQLStatement(const QString &sqlStatement_);
 
 
     private:
@@ -45,7 +46,7 @@ class Database {
         Database& operator= (const Database& Database_); // must be private to avoid creating an new Database-instance by copying
 
         /* --- interfacing the database --- */
-        void createIfNotCreatedDataBase();
+        void create();
 
         /* --- miscellaneous --- */
 

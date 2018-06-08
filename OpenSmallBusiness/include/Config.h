@@ -21,8 +21,10 @@ using namespace std;
 // database
 const QString URL_OF_DATABASE = "localhost";
 const QString NAME_OF_DATABASE = "OpenSmallBusiness";
+const QString NAME_OF_SYS_DATABASE = "mysql";
 const QString USER_OF_DATABASE = "qtuser";
 const QString USER_PASSWORD_OF_DATABASE = "wmr44!§%$l12kjrw";
+
 
 /* --- enums --- */
 enum DataType {BOOL,INT,DOUBLE,STRING}; // TODO

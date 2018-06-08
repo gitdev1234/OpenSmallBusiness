@@ -11,11 +11,14 @@
 
 #include <sstream>
 #include <QSqlQuery>
+
+#include "DatabaseTableType.h"
+#include "Database.h"
+
 // --temp
 #include <iostream>
 using namespace std;
 // --temp
-#include "DatabaseTableType.h"
 
 
 /**
@@ -49,6 +52,7 @@ class DatabaseTable {
 
 private:
         DatabaseTableType *databaseTableType;
+        Database *db;
 };
 
 #endif // DatabaseTable_H

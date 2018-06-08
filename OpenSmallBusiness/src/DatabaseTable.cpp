@@ -10,7 +10,10 @@
 
 /* --- constructor --- */
 DatabaseTable::DatabaseTable() {
-
+    if (db->init()) {
+    } else {
+        cout << "It was not possible to connect to database " << NAME_OF_DATABASE.toStdString() << "!" << endl;
+    }
 }
 
 /* --- provide information about table structure --- */
@@ -33,35 +36,25 @@ void DatabaseTable::setDatabaseTableType(DatabaseTableType *val_) {
 
 /* --- database functions --- */
 bool DatabaseTable::createTable() {
-    stringstream sqlStatement;
+    stringstream sqlStream;
+    QString sqlStatement;
 
     vector<DatabaseTableField> tableFields = getTableStructure();
     if (tableFields.size() > 0) {
-        sqlStatement << "CREATE TABLE " << getTableName() << " (";
+        sqlStream << "CREATE TABLE " << getTableName() << " (";
 
         for (auto const& field: tableFields) {
             string s = field.getTableFieldAndTypeAsString();
             if (&field != &tableFields.back()) {
-                sqlStatement << s << ", ";
+                sqlStream << s << ", ";
             } else {
-                sqlStatement << s ;
+                sqlStream << s ;
             }
 
-
         }
-        sqlStatement << " );";
-
-        cout << sqlStatement.str();
-
-        QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-        db.setHostName("localhost");
-        db.setDatabaseName("OpenSmallBusiness");
-        db.setUserName("qtuser");
-        db.setPassword("wmr44!§%$l12kjrw");
-        bool ok = db.open();
-        QSqlQuery query;
-        query.prepare(QString::fromStdString(sqlStatement.str()));
-        query.exec();
+        sqlStream << " );";
+        sqlStatement.fromStdString(sqlStream.str());
+        db->executeSQLStatement(sqlStatement);
     }
 
 }
